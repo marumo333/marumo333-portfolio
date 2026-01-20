@@ -6,7 +6,7 @@ from pydantic.alias_generators import to_camel
 class ProfileResponse(BaseModel):
     id: UUID
     role: str
-    bio: str |None = None
+    bio: str | None = None
     avatar_url: str | None = None
     updated_at: datetime | None = None
 
