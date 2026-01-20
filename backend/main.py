@@ -6,7 +6,7 @@ app = FastAPI()
 # フロントエンド(SvelteKit)からのアクセスを許可する設定
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # 本番環境ではドメインを指定しますが、開発中はこれでOK
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
