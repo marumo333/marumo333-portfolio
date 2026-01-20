@@ -1,12 +1,16 @@
+from uuid import uuid4
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from schemas import ProfileResponse
 
 app = FastAPI()
 
-# フロントエンド(SvelteKit)からのアクセスを許可する設定
+# フロントエンド(SvelteKit)からのアクセスのみを許可する設定
+origins = ["http://localhost:5173"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=origins, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -16,9 +20,12 @@ app.add_middleware(
 def read_root():
     return {"message": "Hello from FastAPI!"}
 
-@app.get("/portfolio")
+@app.get("/api/profile/me",response_model=ProfileResponse)
 def get_portfolio():
-    return [
-        {"id": 1, "title": "My First Project", "description": "SvelteKitで作りました"},
-        {"id": 2, "title": "Python API", "description": "FastAPIで動いています"}
-    ]
+    return {
+            "id":uuid4(),
+            "role": "developer",
+            "bio": "文系出身でエンジニアを志すものです。",
+            "avatar_url": None,
+            "updated_at":None
+        }
