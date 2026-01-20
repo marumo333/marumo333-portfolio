@@ -20,16 +20,16 @@ app.add_middleware(
 
 
 @app.get("/")
-def read_root():
+def read_root() -> dict[str, str]:
     return {"message": "Hello from FastAPI!"}
 
 
 @app.get("/api/profile/me", response_model=ProfileResponse)
-def get_portfolio():
-    return {
-        "id": uuid4(),
-        "role": "developer",
-        "bio": "文系出身でエンジニアを志すものです。",
-        "avatar_url": None,
-        "updated_at": None,
-    }
+def get_portfolio() -> ProfileResponse:
+    return ProfileResponse(
+        id=uuid4(),
+        role="developer",
+        bio="文系出身でエンジニアを志すものです。",
+        avatar_url=None,
+        updated_at=None,
+    )
