@@ -1,0 +1,45 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'backend/**'      # backendフォルダに変更があった時だけ実行
+      - '.github/workflows/backend.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'backend/**'
+
+defaults:
+  run:
+    working-directory: ./backend  # 全コマンドをbackendフォルダ内で実行
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: 'pip' # pip installを高速化
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        # 開発用ツールもインストール (requirements.txtに含まれていない場合)
+        pip install ruff mypy types-ujson
+
+    - name: Run Ruff (Lint)
+      run: ruff check .
+
+    - name: Run Ruff (Format Check)
+      run: ruff format --check .
+
+    - name: Run Mypy (Type Check)
+      run: mypy .
