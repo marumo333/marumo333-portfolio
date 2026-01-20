@@ -18,16 +18,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def read_root():
     return {"message": "Hello from FastAPI!"}
 
-@app.get("/api/profile/me",response_model=ProfileResponse)
+
+@app.get("/api/profile/me", response_model=ProfileResponse)
 def get_portfolio():
     return {
-            "id":uuid4(),
-            "role": "developer",
-            "bio": "文系出身でエンジニアを志すものです。",
-            "avatar_url": None,
-            "updated_at":None
-        }
+        "id": uuid4(),
+        "role": "developer",
+        "bio": "文系出身でエンジニアを志すものです。",
+        "avatar_url": None,
+        "updated_at": None,
+    }
