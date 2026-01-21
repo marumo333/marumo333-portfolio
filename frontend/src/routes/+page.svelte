@@ -8,7 +8,7 @@
 	</h1>
 
 	<p class="text-base leading-relaxed text-gray-700 md:text-lg lg:text-xl">
-		こちらはmarumo333のスキル・経歴・開発実績が参照できるportfolioのwebアプリです。
-		ログインを行うことで、RAGを用いたportfolio記載の内容に限定したchatが可能です。
+		marumo333のスキル・経歴・開発実績が参照できるportfolioのwebアプリ<br />
+		RAGを用いたportfolio記載の内容に限定したchatが可能(ログインのみ)
 	</p>
 </section>
