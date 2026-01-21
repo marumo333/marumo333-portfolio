@@ -4,9 +4,9 @@ import tailwindcss from '@tailwindcss/vite'; // ← これが必要です！
 
 export default defineConfig({
 	plugins: [
-        sveltekit(),
-        tailwindcss() // ← これがないとTailwindが動きません
-    ],
+		sveltekit(),
+		tailwindcss() // ← これがないとTailwindが動きません
+	],
 	server: {
 		proxy: {
 			'/api': {
