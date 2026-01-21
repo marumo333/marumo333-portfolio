@@ -1,29 +1,33 @@
 <script lang="ts">
-    import '../app.css';
+	import '../app.css';
+	import { resolve } from '$app/paths';
 
-    let { children } = $props();
+	let { children } = $props();
 </script>
 
-<div class="min-h-screen bg-gray-50 flex flex-col font-sans">
-    
-    <header class="w-full p-4 flex justify-center border-b border-gray-200 bg-white/50 backdrop-blur-sm sticky top-0 z-10">
-        <nav class="flex flex-wrap gap-4 items-center justify-center">
-            <a href="/skills" class="px-4 py-2 hover:text-primary transition-colors">スキル</a>
-            <a href="/career" class="px-4 py-2 hover:text-primary transition-colors">経歴</a>
-            <a href="/products" class="px-4 py-2 hover:text-primary transition-colors">開発実績</a>
-            
-            <a href="/login" class="px-4 py-2 bg-primary text-white rounded hover:bg-opacity-90 transition-opacity">
-                ログイン
-            </a>
-        </nav>
-    </header>
+<div class="flex min-h-screen flex-col bg-gray-50 font-sans">
+	<header
+		class="sticky top-0 z-10 flex w-full justify-center border-b border-gray-200 bg-white/50 p-4 backdrop-blur-sm"
+	>
+		<nav class="flex flex-wrap items-center justify-center gap-4">
+			<a href={resolve('/skills')} class="px-4 py-2 transition-colors hover:text-primary">スキル</a>
+			<a href={resolve('/career')} class="px-4 py-2 transition-colors hover:text-primary">経歴</a>
+			<a href={resolve('/products')} class="px-4 py-2 transition-colors hover:text-primary"
+				>開発実績</a
+			>
 
-    <main class="flex-1 flex flex-col justify-center items-center p-4 w-full max-w-4xl mx-auto">
-        {@render children()}
-    </main>
+			<a
+				href={resolve('/login')}
+				class="hover:bg-opacity-90 rounded bg-primary px-4 py-2 text-white transition-opacity"
+			>
+				ログイン
+			</a>
+		</nav>
+	</header>
 
-    <footer class="p-4 text-center text-gray-400 text-sm">
-        &copy; 2026 marumo333 Portfolio
-    </footer>
+	<main class="mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center p-4">
+		{@render children()}
+	</main>
 
+	<footer class="p-4 text-center text-sm text-gray-400">&copy; 2026 marumo333 Portfolio</footer>
 </div>
