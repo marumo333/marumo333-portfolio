@@ -13,6 +13,7 @@
 - name: text (NOT NULL) - スキル名（例: "Python", "SvelteKit"）
 - category: text (NOT NULL) - カテゴリ（例: "Frontend", "Backend", "Infrastructure"）
 - level: integer (1-5) - 習熟度（1: 入門, 5: エキスパート）
+- years_of_experience: numeric - 経験年数（例: 1.5）
 - description: text - 補足説明
 - icon_url: text - アイコン画像URL（任意）
 - display_order: integer (default: 0) - 表示順
