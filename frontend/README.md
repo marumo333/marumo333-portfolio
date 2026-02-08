@@ -1,38 +1,65 @@
-# sv
+# marumo333 Portfolio - Frontend
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit (Svelte 5) + Tailwind CSS v4 で構築されたポートフォリオサイトのフロントエンド。
 
-## Creating a project
+## 技術スタック
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework:** SvelteKit (Svelte 5)
+- **CSS:** Tailwind CSS v4（`@tailwindcss/forms`, `@tailwindcss/typography`）
+- **Language:** TypeScript (strict mode)
+- **Build Tool:** Vite 7
+- **Linter/Formatter:** ESLint 9 + Prettier
+
+## 開発環境
+
+### Docker（推奨）
+
+プロジェクトルートで実行:
 
 ```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+docker compose up
 ```
 
-## Developing
+http://localhost:5173 でアクセス可能。Backend（FastAPI）との通信はViteプロキシ経由。
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### ローカル
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## スクリプト
 
-To create a production version of your app:
+| コマンド | 説明 |
+|---------|------|
+| `npm run dev` | 開発サーバー起動 |
+| `npm run build` | プロダクションビルド |
+| `npm run preview` | ビルド結果のプレビュー |
+| `npm run check` | svelte-check（型チェック） |
+| `npm run lint` | Prettier + ESLint |
+| `npm run format` | Prettier によるフォーマット |
 
-```sh
-npm run build
+## ディレクトリ構成
+
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+src/
+├── app.css                 # グローバルCSS、Tailwind @theme設定
+├── app.d.ts                # SvelteKit型定義
+├── app.html                # HTMLテンプレート
+├── lib/
+│   ├── index.ts
+│   ├── assets/
+│   │   └── favicon.svg
+│   └── components/
+│       └── ui/
+│           ├── TypewriterText.svelte    # タイピングアニメーション
+│           └── PageWithOpening.svelte   # オープニング付きページテンプレート
+└── routes/
+    ├── +layout.svelte      # 共通レイアウト（Header, Footer）
+    ├── +page.svelte        # / (ホーム)
+    ├── skills/             # /skills
+    ├── career/             # /career
+    ├── products/           # /products
+    └── login/              # /login
+```
