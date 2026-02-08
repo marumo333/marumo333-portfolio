@@ -28,7 +28,6 @@
 - period_end: date - 在籍期間（終了）※NULLの場合は現職
 - description: text - 業務内容・実績
 - technologies: text[] - 使用技術（配列）
-- display_order: integer (default: 0) - 表示順
 - created_at: timestamp (default: now())
 - updated_at: timestamp (default: now())
 
