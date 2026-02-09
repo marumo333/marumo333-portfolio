@@ -10,9 +10,9 @@
 		class="flex flex-col items-center text-base leading-relaxed text-gray-700 md:text-lg lg:text-xl"
 	>
 		{#if data.profile}
-			{#if data.profile.avatar_url}
+			{#if data.profile.avatarUrl}
 				<img
-					src={data.profile.avatar_url}
+					src={data.profile.avatarUrl}
 					alt="marumo333 avatar"
 					class="mb-4 h-24 w-24 rounded-full border-4 border-white object-cover shadow-lg"
 				/>
